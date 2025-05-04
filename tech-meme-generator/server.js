@@ -2,8 +2,21 @@ const express = require('express');
 const app = express();
 const PORT = 3000;
 
+const memes = [
+  'When you fix a bug and 10 more appear.',
+  'Git commit messages be like: "final final version".',
+  'Why does it work? I have no idea.',
+  'Code never lies, comments sometimes do.',
+  'It works on my machine!',
+];
+
 app.get('/', (req, res) => {
   res.send('Welcome to the Tech Meme Generator API!');
+});
+
+app.get('/meme', (req, res) => {
+  const randomMeme = memes[Math.floor(Math.random() * memes.length)];
+  res.json({ meme: randomMeme });
 });
 
 app.listen(PORT, () => {
