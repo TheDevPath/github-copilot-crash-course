@@ -15,10 +15,18 @@ app.get('/', (req, res) => {
 });
 
 app.get('/meme', (req, res) => {
-  const randomMeme = memes[Math.floor(Math.random() * memes.length)];
-  res.json({ meme: randomMeme });
+  try {
+    const randomMeme = memes[Math.floor(Math.random() * memes.length)];
+    res.json({ meme: randomMeme });
+  } catch (error) {
+    res.status(500).json({ error: 'An error occurred while fetching a meme.' });
+  }
 });
 
-app.listen(PORT, () => {
-  console.log(`Server is running on http://localhost:${PORT}`);
-});
+if (require.main === module) {
+  app.listen(PORT, () => {
+    console.log(`Server is running on http://localhost:${PORT}`);
+  });
+}
+
+module.exports = app;
