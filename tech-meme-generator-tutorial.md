@@ -47,13 +47,32 @@ In this tutorial, we'll create a simple REST API that generates random tech meme
 
    > **Copilot Agent Prompt**: "Generate a basic Express.js server that listens on port 3000 and has a root endpoint returning a welcome message."
 
-3. Run the server:
+3. Install `nodemon` to automatically restart the server on file changes:
 
    ```bash
-   node server.js
+   npm install --save-dev nodemon
    ```
 
-   > **Copilot Agent Prompt**: "Write a command to start a Node.js server."
+   > **Copilot Agent Prompt**: " Set up nodemon as a development dependency so we don't have to restart the server manually."
+
+4. Update the `package.json` file to include a `dev` script for running the server with `nodemon`:
+
+   ```json
+   "scripts": {
+     "start": "node server.js",
+     "dev": "nodemon server.js"
+   }
+   ```
+
+   > **Copilot Agent Prompt**: "Add a `dev` script to the package.json file to use nodemon for development."
+
+5. Run the server in development mode:
+
+   ```bash
+   npm run dev
+   ```
+
+   > **Copilot Agent Prompt**: "Write a command to start the server using nodemon."
 
    Open your browser and navigate to `http://localhost:3000` to see the welcome message.
 
@@ -78,10 +97,10 @@ In this tutorial, we'll create a simple REST API that generates random tech meme
 
    > **Copilot Agent Prompt**: "Write an Express.js route that returns a random item from an array of tech memes as a JSON response."
 
-2. Restart the server and test the `/meme` endpoint:
+2. If you don't already have it running, restart the server and test the `/meme` endpoint:
 
    ```bash
-   node server.js
+   npm run dev
    ```
 
    > **Copilot Agent Prompt**: "Generate a command to restart a Node.js server."
