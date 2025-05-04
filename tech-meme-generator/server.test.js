@@ -12,7 +12,9 @@ describe('GET /meme', () => {
   it('should handle errors gracefully', async () => {
     // Simulate an error scenario if applicable
     // Example: Mock a function to throw an error
-    jest.spyOn(Math, 'random').mockImplementation(() => { throw new Error('Random error'); });
+    jest.spyOn(Math, 'random').mockImplementation(() => {
+      throw new Error('Random error');
+    });
 
     const response = await request(app).get('/meme');
     expect(response.status).toBe(500);
